@@ -92,12 +92,12 @@ std::string generateCacheLatencyParams(string halfBackedConfig) {
 		indexIL1 = 5;
 	}
 
-	if (dl1assoc == 2){
-		indexDL1 = indexDL1 + 1;
-	}else if (dl1assoc == 4){
-		indexDL1 = indexDL1 + 2;
-	}else if (dl1assoc == 8){
-		indexDL1 = indexDL1 + 3;
+	if (il1assoc == 2){
+		indexIL1 = indexIL1 + 1;
+	}else if (il1assoc == 4){
+		indexIL1 = indexIL1 + 2;
+	}else if (il1assoc == 8){
+		indexIL1 = indexIL1 + 3;
 	}
 	
 
@@ -116,6 +116,18 @@ std::string generateCacheLatencyParams(string halfBackedConfig) {
 		indexU2 = 5;
 	}
 
+	if (l2assoc == 2){
+		indexU2 = indexU2 + 1;
+	}else if (l2assoc == 4){
+		indexU2 = indexU2 + 2;
+	}else if (l2assoc == 8){
+		indexU2 = indexU2 + 3;
+	}else if (l2assoc == 16){
+		indexU2 = indexU2 + 4;
+	}
+
+
+
 	if (dl1Size == 2048){
 		indexDL1 = 0;
 	}else if (dl1Size == 4096){
@@ -130,6 +142,14 @@ std::string generateCacheLatencyParams(string halfBackedConfig) {
 		indexDL1 = 5;
 	}
 
+	if (dl1assoc == 2){
+		indexDL1 = indexDL1 + 1;
+	}else if (dl1assoc == 4){
+		indexDL1 = indexDL1 + 2;
+	}else if (dl1assoc == 8){
+		indexDL1 = indexDL1 + 3;
+	}
+
 	//
 	//YOUR CODE BEGINS HERE
 	//
@@ -137,6 +157,22 @@ std::string generateCacheLatencyParams(string halfBackedConfig) {
 
 	// This is a dumb implementation.
 	latencySettings = "1 1 1";
+	//latencySettings[0] = indexDL1 - 1 + "0";
+	//latencySettings[1] = indexIL1 - 1 + "0";
+	//latencySettings[2] = indexU2 - 1 + "0";
+
+	printf("this is the dl1 size: %d\n", dl1Size);
+	printf("this is the dl1 index: %d\n",indexDL1);
+	printf("this is the dl1 assoc: %d\n\n", dl1assoc);
+
+	printf("this is the il1 size: %d\n", il1Size);
+	printf("this is the il1 index: %d\n",indexIL1);
+	printf("this is the il1 assoc: %d\n\n", il1assoc);
+
+	printf("this is the ul2 size: %d\n", u2Size);
+	printf("this is the ul2 index: %d\n",indexU2);
+	printf("this is the ul2 assoc: %d\n\n", l2assoc);
+
 
 	//
 	//YOUR CODE ENDS HERE
